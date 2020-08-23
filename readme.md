@@ -1,12 +1,12 @@
 # [suoran](https://github.com/chenshenchao/suoran)
 
-## 安装
+## 使用
 
 ```bash
 pip install suoran
 ```
 
-## 扩展 Sanic 控制器相关的路由
+### 扩展 Sanic 控制器相关的路由
 
 ```python
 # app.py
@@ -47,7 +47,9 @@ class IndexController:
         return json({ 'index': 2 })
 ```
 
-## 测试
+## 源码
+
+### 测试
 
 ```bash
 # 所有测试
@@ -55,4 +57,17 @@ python -m unittest discover test/unit -p *.py
 
 # 指定测试
 python -m unittest test.route
+```
+
+### 发布
+
+```bash
+# 安装发布工具
+pip install twine wheel
+
+# 打包
+python setup.py sdist bdist_wheel
+
+# 上传
+twine upload dist/*
 ```

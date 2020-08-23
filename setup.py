@@ -6,7 +6,7 @@ def load_content(path):
 
 setuptools.setup(
     name='suoran',
-    version='0.0.1',
+    version='0.0.2',
     description='extends sanic',
     long_description=load_content('readme.md'),
     long_description_content_type='text/markdown',
