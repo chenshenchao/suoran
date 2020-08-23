@@ -1,6 +1,6 @@
-from setuptools import setup
+import setuptools
 
-setup(
+setuptools.setup(
     name='suoran',
     version='0.0.1',
     description='extends sanic',
@@ -21,4 +21,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
+    packages=setuptools.find_packages(
+        exclude=['test']
+    )
 )
