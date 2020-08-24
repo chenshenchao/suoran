@@ -9,13 +9,17 @@ class Router:
 
     def __init__(self, module):
         '''
+        初始化。
         '''
+
         self.module = module
         self.actions = []
 
     def route(self, app):
         '''
+        添加路由到应用。
         '''
+
         for cn, n, uri, args, kwargs in self.actions:
             if cn != None:
                 controller_class = getattr(self.module, cn)
@@ -37,7 +41,9 @@ class Router:
         kwargs
     ):
         '''
+        存储路由参数。
         '''
+
         self.actions.append((
             class_name,
             method_name,
@@ -69,29 +75,56 @@ def action(uri,  *args, **kwargs):
     return decorator
 
 
+def any(uri, *args, **kwargs):
+    '''
+    接受所有方法类型。
+    '''
+
+    kwargs['methods'] = [
+        'HEAD',
+        'GET',
+        'POST',
+        'PUT',
+        'DELETE',
+        'CONNECT',
+        'OPTIONS',
+        'TRACE',
+        'PATCH',
+    ]
+    return action(uri, *args, **kwargs)
+
+
 def get(uri,  *args, **kwargs):
     '''
+    接受 GET 请求。
     '''
+
     kwargs['methods'] = ['GET']
     return action(uri, *args, **kwargs)
 
 
 def put(uri,  *args, **kwargs):
     '''
+    接受 PUT 请求。
     '''
+
     kwargs['methods'] = ['PUT']
     return action(uri, *args, **kwargs)
 
 
 def delete(uri,  *args, **kwargs):
     '''
+    接受 DELETE 请求。
     '''
+
     kwargs['methods'] = ['DELETE']
     return action(uri, *args, **kwargs)
 
 
 def post(uri,  *args, **kwargs):
     '''
+    接受 POST 请求。
     '''
+
     kwargs['methods'] = ['POST']
     return action(uri, *args, **kwargs)
