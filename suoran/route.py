@@ -34,11 +34,11 @@ class Router:
 
     def append(
         self,
-        class_name, # 类名
-        method_name, # 方法名
-        uri, # 路由 URI
-        args, # 路由 数组参数
-        kwargs # 路由 键值参数
+        class_name,  # 类名
+        method_name,  # 方法名
+        uri,  # 路由 URI
+        args,  # 路由 数组参数
+        kwargs  # 路由 键值参数
     ):
         '''
         存储路由参数。

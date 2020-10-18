@@ -10,13 +10,13 @@ class Application(Sanic):
 
     def __init__(
         self,
-        name=None, # 应用名
-        router=None, # 路由
-        error_handler=None, # 错误处理
+        name=None,  # 应用名
+        router=None,  # 路由
+        error_handler=None,  # 错误处理
         load_env=True,
         request_class=None,
         strict_slashes=False,
-        log_config=None, # 日志配置
+        log_config=None,  # 日志配置
         configure_logging=True
     ):
         '''

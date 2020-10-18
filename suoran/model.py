@@ -16,8 +16,10 @@ def collect(module, deep=True):
             result |= collect(m, deep)
     return result
 
+
 async def initialize(setting, *modules):
     '''
+    初始化。
     '''
 
     models = set()
