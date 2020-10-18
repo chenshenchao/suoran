@@ -37,6 +37,6 @@ setuptools.setup(
     install_requires=[
         'sanic>=20.9.0',
         'tortoise-orm>=0.16.16',
-        'aiomysql=>0.0.20',
+        'aiomysql>=0.0.20',
     ]
 )
