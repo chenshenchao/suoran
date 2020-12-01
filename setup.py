@@ -12,7 +12,7 @@ def load_content(path):
 
 setuptools.setup(
     name='suoran',
-    version='0.0.3',
+    version='0.0.4',
     description='extends sanic',
     long_description=load_content('readme.md'),
     long_description_content_type='text/markdown',
@@ -34,9 +34,17 @@ setuptools.setup(
     packages=setuptools.find_packages(
         exclude=['test']
     ),
+    package_data={
+        'skeleton': [
+            'skeleton/*.py',
+        ],
+    },
     install_requires=[
         'sanic>=20.9.0',
         'tortoise-orm>=0.16.16',
         'aiomysql>=0.0.20',
-    ]
+    ],
+    entry_points={
+        'console_scripts': 'suoran=suoran.command:luanch',
+    },
 )

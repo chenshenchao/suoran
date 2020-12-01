@@ -1,7 +1,7 @@
 from pkgutil import iter_modules
 from importlib import import_module
 from sanic import Sanic
-
+from .common import *
 
 class Application(Sanic):
     '''
@@ -32,6 +32,16 @@ class Application(Sanic):
             strict_slashes=strict_slashes,
             log_config=log_config,
             configure_logging=configure_logging
+        )
+
+    def apply(self, **kwargs):
+        '''
+        应用启动。
+        '''
+        
+        self.run(
+            host=kwargs['host'] if 'host' in kwargs else'0.0.0.0',
+            port=kwargs['port'] if 'port' in kwargs else 8000
         )
 
     def control(self, module, deep=True):

@@ -3,7 +3,11 @@
 ## 使用
 
 ```bash
+# 安装
 pip install suoran
+
+# 创建骨架
+suoran new myapp
 ```
 
 ### 扩展 Sanic 控制器相关的路由
@@ -21,6 +25,8 @@ async def initialize(app, loop):
     初始化。
     '''
     app.control(controller)
+
+app.apply()
 ```
 
 ```python
@@ -48,6 +54,13 @@ class IndexController:
 ```
 
 ## 源码
+
+### 开发
+
+```bash
+# 安装到本地环境
+pip install -e .
+```
 
 ### 测试
 
