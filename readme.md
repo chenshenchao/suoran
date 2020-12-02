@@ -8,6 +8,9 @@ pip install suoran
 
 # 创建骨架
 suoran new myapp
+
+# 也可以在现有的目录内生成文件
+suoran init
 ```
 
 ### 扩展 Sanic 控制器相关的路由

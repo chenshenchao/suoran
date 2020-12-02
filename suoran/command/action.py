@@ -31,4 +31,11 @@ def new(args, options):
 
 def init(args, options):
     '''
+    初始化项目
     '''
+
+    argc = len(args)
+    if argc > 0:
+        print('init not any args.')
+    else:
+        skeleton.unzip('.')

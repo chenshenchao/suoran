@@ -6,7 +6,7 @@ zip('skeleton')
 
 setuptools.setup(
     name='suoran',
-    version='0.0.9',
+    version='0.0.10',
     description='extends sanic',
     long_description=load_content('readme.md'),
     long_description_content_type='text/markdown',
