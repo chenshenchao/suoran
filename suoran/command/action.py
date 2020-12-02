@@ -1,3 +1,5 @@
+from . import skeleton
+
 def start(args, options):
     '''
     '''
@@ -23,6 +25,8 @@ def new(args, options):
         print('input path of new app.')
     elif argc > 1:
         print(f'args need 1 but {argc} input')
+    else:
+        skeleton.unzip(args[0])
     
 
 def init(args, options):
