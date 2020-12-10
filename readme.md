@@ -18,7 +18,6 @@ suoran init
 ```python
 # app.py
 from suoran import Application
-from . import controller # 定义控制器的模块或包
 
 app = Application()
 
@@ -27,7 +26,9 @@ async def initialize(app, loop):
     '''
     初始化。
     '''
-    app.control(controller)
+
+    # 加载控制器包
+    app.control('controller')
 
 app.apply()
 ```
