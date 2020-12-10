@@ -49,6 +49,10 @@ class Application(Sanic):
         加载控制器。
         '''
 
+        # 如果传模块名则加载。
+        if isinstance(module, str):
+            module = import_module(module)
+
         # 加载路由。
         if hasattr(module, '___router___'):
             router = getattr(module, '___router___')
@@ -58,6 +62,6 @@ class Application(Sanic):
         name = module.__name__
         if deep and module.__loader__.is_package(name):
             for _, child, _ in iter_modules(module.__path__):
-                mn = '{}.{}'.format(name, child)
+                mn = f'{name}.{child}'
                 m = import_module(mn)
                 self.control(m, deep)
