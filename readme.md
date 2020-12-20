@@ -17,9 +17,9 @@ suoran init
 
 ```python
 # app.py
-from suoran import Application
+from suoran import new_application
 
-app = Application()
+app = new_application()
 
 @app.listener('before_server_start')
 async def initialize(app, loop):

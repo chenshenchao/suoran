@@ -12,11 +12,6 @@ def get_path(*paths):
     return os.path.join(folder, *paths)
 
 
-def get_configuration():
-    '''
-    '''
-
-
 def load_content(path):
     '''
     加载文件内容。

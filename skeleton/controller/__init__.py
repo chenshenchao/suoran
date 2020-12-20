@@ -1,12 +1,15 @@
-from sanic.response import json, html
+from os import read
+from sanic.response import json, html, redirect
 from suoran import route
+
 
 @route.get('/')
 async def index(request):
     '''
     Sanic 类似的定义。
     '''
-    return json({ 'index': 1 })
+    return redirect('/index.html')
+
 
 class IndexController:
     '''
@@ -17,4 +20,6 @@ class IndexController:
         '''
         比 Sanic 多出 self 参数。
         '''
-        return json({ 'index': 2 })
+
+        with open('./view/index.html', 'r', encoding='utf8') as reader:
+            return html(reader.read())

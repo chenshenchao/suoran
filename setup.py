@@ -27,9 +27,11 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages(),
     install_requires=[
-        'sanic>=20.9.0',
+        'sanic>=20.9.1',
         'tortoise-orm>=0.16.16',
         'aiomysql>=0.0.20',
+        'jinja2>=2.11.2',
+        'python-dotenv>=0.15.0',
     ],
     entry_points={
         'console_scripts': 'suoran=suoran.command:luanch',
