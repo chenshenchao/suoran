@@ -1,7 +1,7 @@
-from suoran import new_application
-from suoran import view
+from suoran import new_application, view, model
 
 app = new_application()
+
 
 @app.listener('before_server_start')
 async def initialize(app, loop):
@@ -10,6 +10,15 @@ async def initialize(app, loop):
     '''
     app.control('controller')
     app.static('/', './public')
+    await model.init(app, initial=True)
     view.init('view')
+
+
+@app.listener('after_server_stop')
+async def uninitialize(app, loop):
+    '''
+    '''
+
+    await model.exit(app)
 
 app.apply()

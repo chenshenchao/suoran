@@ -14,4 +14,5 @@ def new_application(**kws):
     appcnf = config['app']
     appcnf['log_config'] = config['log']
     app = Application(**{**appcnf, **kws})
+    app.config.SUORAN = config
     return app

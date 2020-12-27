@@ -8,6 +8,10 @@
 
 {% block middle %}
 <div class="">
-    <p>suoran 是一个基于 sanic 的 web 框架。</p>
+    <div class="visitor-list">
+        {% for v in visitors %}
+        <div>{{ v.id }} - {{ v.account }} - {{ v.nickname }}</div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
