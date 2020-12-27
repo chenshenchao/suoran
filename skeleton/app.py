@@ -1,4 +1,5 @@
 from suoran import new_application
+from suoran import view
 
 app = new_application()
 
@@ -9,5 +10,6 @@ async def initialize(app, loop):
     '''
     app.control('controller')
     app.static('/', './public')
+    view.init('view')
 
 app.apply()

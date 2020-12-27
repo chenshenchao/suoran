@@ -1,6 +1,6 @@
-from os import read
-from sanic.response import json, html, redirect
+from sanic.response import redirect
 from suoran import route
+from suoran.view import render
 
 
 @route.get('/')
@@ -21,5 +21,8 @@ class IndexController:
         比 Sanic 多出 self 参数。
         '''
 
-        with open('./view/index.html', 'r', encoding='utf8') as reader:
-            return html(reader.read())
+        return render('index.html')
+
+    @route.get('/about.html')
+    async def about(self, request):
+        return render('about.html')
