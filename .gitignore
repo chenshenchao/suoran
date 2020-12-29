@@ -3,4 +3,5 @@
 /dist/
 /*.egg-info/
 __pycache__
-skeletonzip.py
+/suoran/asset/*.py
+!/suoran/asset/__init__.py

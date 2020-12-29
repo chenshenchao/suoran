@@ -1,25 +1,31 @@
 import os
 import io
 import base64
+from os.path import basename
 import zipfile
+from ran import pkg
 from ..common import list_files
 
 
 def zip(folder):
     '''
-    把框架压缩成字符串并写到 python 文件里。
+    压缩。
     '''
-    with io.BytesIO() as bio:
-        with zipfile.ZipFile(bio, 'w') as zf:
-            for p in list_files(folder):
-                n = os.path.relpath(p, folder)
-                if n.find('__pycache__') < 0:
-                    zf.write(p, n)
-        d = os.path.dirname(__file__)
-        t = os.path.join(d, 'skeletonzip.py')
-        r = base64.b64encode(bio.getbuffer())
-        with open(t, 'w', encoding='utf8') as writer:
-            writer.write(f'zip={r}')
+
+    d = os.path.dirname(os.path.dirname(__file__))
+    t = os.path.join(d, 'asset', 'skeleton.py')
+
+    def filter(name, path):
+        if path.find('__pycache__') >= 0:
+            return False
+        suffix = os.path.splitext(path)[1]
+        if suffix in ['.db', '.db-shm', '.db-wal', '.log']:
+            return False
+        basename = os.path.basename(path)
+        if basename in ['.env']:
+            return False
+        return True
+    pkg.save(t, filter=filter, zip=folder)
 
 
 def unzip(folder):
@@ -27,8 +33,4 @@ def unzip(folder):
     解压框架。
     '''
 
-    from . import skeletonzip
-    b = base64.b64decode(skeletonzip.zip)
-    with io.BytesIO(b) as bio:
-        with zipfile.ZipFile(bio, 'r') as zf:
-            zf.extractall(folder)
+    pkg.cast('suoran.asset.skeleton', 'zip', folder)

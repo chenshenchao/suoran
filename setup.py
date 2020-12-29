@@ -1,14 +1,14 @@
 import setuptools
-from suoran import load_content
-from suoran.command.skeleton import zip
+from ran import fs
+from suoran.command import skeleton
 
-zip('skeleton')
+skeleton.zip('skeleton')
 
 setuptools.setup(
     name='suoran',
-    version='0.0.11',
+    version='0.0.12',
     description='extends sanic',
-    long_description=load_content('readme.md'),
+    long_description=fs.load('readme.md'),
     long_description_content_type='text/markdown',
     url='https://github.com/chenshenchao/suoran',
     keywords='sanic suoran',
@@ -32,6 +32,7 @@ setuptools.setup(
         'aiomysql>=0.0.20',
         'jinja2>=2.11.2',
         'python-dotenv>=0.15.0',
+        'ran>=0.0.4',
     ],
     entry_points={
         'console_scripts': 'suoran=suoran.command:luanch',

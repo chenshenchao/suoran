@@ -63,7 +63,7 @@ class IndexController:
 
 ```bash
 # 安装到本地环境
-pip install -e .
+pip install -e . -i https://pypi.python.org/pypi
 
 # 指定源更新
 pip install --upgrade suoran -i https://pypi.python.org/pypi
